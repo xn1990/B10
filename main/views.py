@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,render_to_response
+from django.contrib.auth.hashers import make_password, check_password
 from django import forms
 from models import User
 
@@ -21,15 +22,26 @@ def login(request):
             op = request.POST['op']
             if op == "signin":
                 #对比输入的用户名和密码和数据库中是否一致
-                userPassJudge = User.objects.filter(username__exact=username,password__exact=password)
+                userPassJudge = User.objects.filter(username__exact=username)
+                if userPassJudge:
+                    db_password = User.objects.get(username__exact=username).password
+                    userPassJudge = check_password(password,db_password)
+                else:
+                    return HttpResponseRedirect('/login.html#signin')
                 if userPassJudge:
                     response = HttpResponseRedirect('/index.html')
                     response.set_cookie('cookie_username',username,3600)
                     return response
                 else:
-                    return HttpResponseRedirect('/login.html')
+                    return HttpResponseRedirect('/login.html#signin')
             else:
-                User.objects.create(username= username,password=password)
+                userPassJudge = User.objects.filter(username__exact=username)
+                if userPassJudge:
+                    return HttpResponseRedirect('/login.html#signup')
+                else:
+                    password = make_password(password,None,'pbkdf2_sha256')
+                    User.objects.create(username= username,password= password)
+                    return HttpResponseRedirect('/login.html#signin')
                 
     else:
         uf = UserForm(request.POST)
