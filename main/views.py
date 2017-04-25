@@ -27,25 +27,32 @@ def login(request):
                     db_password = User.objects.get(username__exact=username).password
                     userPassJudge = check_password(password,db_password)
                 else:
-                    return HttpResponseRedirect('/login.html#signin')
+                    login_error = u'账号不存在或密码不正确'
                 if userPassJudge:
                     response = HttpResponseRedirect('/index.html')
                     response.set_cookie('cookie_username',username,3600)
                     return response
                 else:
-                    return HttpResponseRedirect('/login.html#signin')
+                    login_error = u'账号不存在或密码不正确'
             else:
                 userPassJudge = User.objects.filter(username__exact=username)
                 if userPassJudge:
-                    return HttpResponseRedirect('/login.html#signup')
+                    regist_error = u'账号已存在'
                 else:
                     password = make_password(password,None,'pbkdf2_sha256')
                     User.objects.create(username= username,password= password)
-                    return HttpResponseRedirect('/login.html#signin')
+                    return HttpResponseRedirect('/login#signin')
                 
     else:
         uf = UserForm(request.POST)
-    return render(request,'login.html',{'uf':uf})
+    if isset(login_error):
+        login_error = u''
+        username = ''
+
+    if isset(regist_error):
+        regist_error = u''
+        
+    return render(request,'login.html',{'uf':uf, 'login_error':login_error, 'regist_error':regist_error, 'username':username})
 
 def regist(request):
     if request.method == 'POST':
