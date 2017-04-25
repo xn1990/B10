@@ -45,14 +45,17 @@ def login(request):
                 
     else:
         uf = UserForm(request.POST)
-    if isset(login_error):
-        login_error = u''
-        username = ''
-
-    if isset(regist_error):
-        regist_error = u''
         
-    return render(request,'login.html',{'uf':uf, 'login_error':login_error, 'regist_error':regist_error, 'username':username})
+    if login_error & regist_error:
+        return render(request,'login.html',{'uf':uf, 'login_error':login_error, 'regist_error':regist_error, 'username':username})
+
+    if login_error:
+        return render(request,'login.html',{'uf':uf, 'login_error':login_error, 'username':username})
+
+    if regist_error:
+        return render(request,'login.html',{'uf':uf, 'regist_error':regist_error})
+        
+    return render(request,'login.html',{'uf':uf})
 
 def regist(request):
     if request.method == 'POST':
