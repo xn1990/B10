@@ -2,8 +2,6 @@
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,render_to_response
 from django.contrib.auth.hashers import make_password, check_password
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django import forms
 from models import User
 
