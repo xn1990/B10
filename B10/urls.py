@@ -16,10 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from main import views as main_views
+from django.views.generic.base import RedirectView
+
+favicon_view = RedirectView.as_view(url='/static/images/favicon.ico', permanent=True)
 
 urlpatterns = [
     url(r'^$', main_views.index,name='index'),
-    url(r'^index.html', main_views.index,name='index'),
-    url(r'^login.html', main_views.login,name='login'),
+    url(r'^login', main_views.login,name='login'),
+    url(r'^logout', main_views.logout,name='logout'),
+    url(r'^favicon\.ico$', favicon_view),
     url(r'^admin/', admin.site.urls),
 ]

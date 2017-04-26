@@ -125,3 +125,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/login/'
+
+#Session setting
+
+SESSION_COOKIE_AGE=60*15
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

@@ -41,7 +41,7 @@
               <div>
                 <input type="password" class="form-control" placeholder="Password" name="password" required id="signin_password" />
                 <input type="hidden" id="sign_in" name="op" value="signin"/>
-                {% if error %}
+                {% if login_error %}
                 <p style="color: red;">{{login_error}}</p>
                 {% endif %}
               </div>
@@ -80,7 +80,7 @@
               <div>
                 <input type="password" class="form-control" placeholder="Password" name="password" required id="signup_password" />
                 <input type="hidden" id="sign_up" name="op" value="signup"/>
-                {% if error %}
+                {% if regist_error %}
                 <p style="color: red;">{{regist_error}}</p>
                 {% endif %}
               </div>
