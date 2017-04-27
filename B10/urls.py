@@ -17,13 +17,19 @@ from django.conf.urls import url
 from django.contrib import admin
 from main import views as main_views
 from django.views.generic.base import RedirectView
+from django.conf.urls import handler403,handler404, handler500
+
+
+handler403 = main_views.permission_denied
+handler404 = main_views.page_not_found
+handler500 = main_views.page_error
 
 favicon_view = RedirectView.as_view(url='/static/images/favicon.ico', permanent=True)
 
 urlpatterns = [
     url(r'^$', main_views.index,name='index'),
-    url(r'^login', main_views.login,name='login'),
-    url(r'^logout', main_views.logout,name='logout'),
+    url(r'^login$', main_views.login,name='login'),
+    url(r'^logout$', main_views.logout,name='logout'),
     url(r'^favicon\.ico$', favicon_view),
     url(r'^admin/', admin.site.urls),
 ]

@@ -24,8 +24,7 @@ SECRET_KEY = 'j)o068+9g21ek^)(2a=#oec)p4^h1-ic^(&@cha76ip-s@&!!f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -124,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_URL = '/login/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 #Session setting
 

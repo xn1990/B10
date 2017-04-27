@@ -8,6 +8,17 @@ from models import User
 class UserForm(forms.Form): 
     username = forms.CharField(label='用户名',max_length=100)
     password = forms.CharField(label='密码',widget=forms.PasswordInput())
+
+def page_not_found(request):
+    return render(request, 'page_404.html')
+
+
+def page_error(request):
+    return render(request, 'page_500.html')
+
+
+def permission_denied(request):
+    return render(request, 'page_403.html')
  
 def index(request):
     if request.session.get('session_username',False):
