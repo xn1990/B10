@@ -53,9 +53,13 @@ def login(request):
                 if userPassJudge:
                     regist_error = u'账号已存在'
                 else:
-                    password = make_password(password,None,'pbkdf2_sha256')
-                    User.objects.create(username= username,password= password)
-                    return HttpResponseRedirect('/login#sign')
+                    password_length = len(password)
+                    if ((password_length >= 8) & (password_length <=15)):
+                        password = make_password(password,None,'pbkdf2_sha256')
+                        User.objects.create(username= username,password= password)
+                        return HttpResponseRedirect('/login#sign')
+                    else:
+                        regist_error = u'注册密码格式无效'
                 
     else:
         uf = UserForm(request.POST)
