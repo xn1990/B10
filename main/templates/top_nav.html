@@ -11,14 +11,19 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="">
             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <img src="{% static 'images/img.jpg' %}" alt="">{{username}}
+              <img src="{{img_url}}" alt="">{{username}}
               <span class=" fa fa-angle-down"></span>
             </a>
             <ul class="dropdown-menu dropdown-usermenu pull-right">
-              <li><a href="javascript:;"> Profile</a></li>
+              <li>
+                <a href="/profile">
+                  <span class="badge bg-red pull-right">50%</span>
+                  <span>Profile</span>
+                </a>
+              </li>
               <li>
                 <a href="javascript:;">
-                  <span class="badge bg-red pull-right">50%</span>
+                  <span class="badge bg-red pull-right">coming soon</span>
                   <span>Settings</span>
                 </a>
               </li>
@@ -35,7 +40,7 @@
             <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
               <li>
                 <a>
-                  <span class="image"><img src="{% static 'images/img.jpg' %}" alt="Profile Image" /></span>
+                  <span class="image"><img src="{{img_url}}" alt="Profile Image" /></span>
                   <span>
                     <span>John Smith</span>
                     <span class="time">3 mins ago</span>
@@ -47,7 +52,7 @@
               </li>
               <li>
                 <a>
-                  <span class="image"><img src="{% static 'images/img.jpg' %}" alt="Profile Image" /></span>
+                  <span class="image"><img src="{{img_url}}" alt="Profile Image" /></span>
                   <span>
                     <span>John Smith</span>
                     <span class="time">3 mins ago</span>
@@ -59,7 +64,7 @@
               </li>
               <li>
                 <a>
-                  <span class="image"><img src="{% static 'images/img.jpg' %}" alt="Profile Image" /></span>
+                  <span class="image"><img src="{{img_url}}" alt="Profile Image" /></span>
                   <span>
                     <span>John Smith</span>
                     <span class="time">3 mins ago</span>
@@ -71,7 +76,7 @@
               </li>
               <li>
                 <a>
-                  <span class="image"><img src="{% static 'images/img.jpg' %}" alt="Profile Image" /></span>
+                  <span class="image"><img src="{{img_url}}" alt="Profile Image" /></span>
                   <span>
                     <span>John Smith</span>
                     <span class="time">3 mins ago</span>

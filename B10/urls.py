@@ -30,6 +30,9 @@ urlpatterns = [
     url(r'^$', main_views.index,name='index'),
     url(r'^login$', main_views.login,name='login'),
     url(r'^logout$', main_views.logout,name='logout'),
+    url(r'^profile$', main_views.profile,name='profile'),
+
+    
     url(r'^favicon\.ico$', favicon_view),
     url(r'^admin/', admin.site.urls),
 ]
