@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for B10 project.
 
@@ -120,12 +121,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+PROJECT_PATH = os.path.abspath(os.path.join('B10')).replace('\\','/')
+
+STATIC_ROOT = os.path.join(os.path.join(PROJECT_PATH), 'static').replace('\\','/')
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 #Session setting
 
-SESSION_COOKIE_AGE=60*15
+SESSION_COOKIE_AGE=60*30
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True

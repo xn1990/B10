@@ -1,4 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 from .models import User
- 
-admin.site.register(User)
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('Full_name','gender','identity')
+
+admin.site.register(User,UserAdmin)

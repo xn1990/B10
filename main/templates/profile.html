@@ -79,26 +79,25 @@
                       <div class="profile_img">
                         <div id="crop-avatar">
                           <!-- Current avatar -->
-                          <img class="img-responsive avatar-view" src="{{img_url}}" alt="Avatar" title="Change the avatar">
+                          <img class="img-responsive avatar-view" src="{{uf.headImg}}" alt="Avatar" title="Change the avatar">
                         </div>
                       </div>
-                      <h3>Samuel Doe</h3>
+                      <h3>{{uf.Full_name}}</h3>
 
                       <ul class="list-unstyled user_data">
-                        <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
+                        <li><i class="fa fa-map-marker user-profile-icon"></i> {{uf.living_address}}
                         </li>
 
                         <li>
-                          <i class="fa fa-briefcase user-profile-icon"></i> Software Engineer
+                          <i class="fa fa-users user-profile-icon"></i> {{uf.identity}}
                         </li>
 
                         <li class="m-top-xs">
-                          <i class="fa fa-external-link user-profile-icon"></i>
-                          <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+                          <i class="fa fa-envelope user-profile-icon"></i>{{uf.email_address}}
                         </li>
                       </ul>
 
-                      <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+                      <a class="btn btn-success" href="/edit_profile"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
                       <br />
 
                       <!-- start skills -->
@@ -164,7 +163,7 @@
                             <!-- start recent activity -->
                             <ul class="messages">
                               <li>
-                                <img src="images/img.jpg" class="avatar" alt="Avatar">
+                                <img src="{{uf.headImg}}" class="avatar" alt="Avatar">
                                 <div class="message_date">
                                   <h3 class="date text-info">24</h3>
                                   <p class="month">May</p>
@@ -180,7 +179,7 @@
                                 </div>
                               </li>
                               <li>
-                                <img src="images/img.jpg" class="avatar" alt="Avatar">
+                                <img src="{{uf.headImg}}" class="avatar" alt="Avatar">
                                 <div class="message_date">
                                   <h3 class="date text-error">21</h3>
                                   <p class="month">May</p>
@@ -196,7 +195,7 @@
                                 </div>
                               </li>
                               <li>
-                                <img src="images/img.jpg" class="avatar" alt="Avatar">
+                                <img src="{{uf.headImg}}" class="avatar" alt="Avatar">
                                 <div class="message_date">
                                   <h3 class="date text-info">24</h3>
                                   <p class="month">May</p>
@@ -212,7 +211,7 @@
                                 </div>
                               </li>
                               <li>
-                                <img src="images/img.jpg" class="avatar" alt="Avatar">
+                                <img src="{{uf.headImg}}" class="avatar" alt="Avatar">
                                 <div class="message_date">
                                   <h3 class="date text-error">21</h3>
                                   <p class="month">May</p>
@@ -310,14 +309,7 @@
         </div>
         <!-- /page content -->
 
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by Colorlib. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+        {% include 'footer.html' %}
       </div>
     </div>
 

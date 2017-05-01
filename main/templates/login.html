@@ -36,11 +36,13 @@
               {% csrf_token %}
 
               <div>
-                <input type="text" class="form-control" placeholder="Username" name="username" required id="signin_username" value="{{username}}"/>
+                <input type="text" class="form-control" placeholder="Username" name="signin_username" required id="signin_username" value="{{username}}"/>
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" name="password" required id="signin_password" />
-                <input type="hidden" id="sign_in" name="op" value="signin"/>
+                <input type="password" class="form-control" placeholder="Password" name="signin_password" required id="signin_password" />
+              </div>
+              <div>
+              	<input type="hidden" id="sign_in" name="op" value="signin"/>
                 {% if login_error %}
                 <p style="color: red;">{{login_error}}</p>
                 {% endif %}
@@ -69,25 +71,30 @@
           </section>
         </div>
 
-        <div id="register" class="animate form registration_form">
+        <div id="register" class="animate form registration_form" novalidate>
           <section class="login_content">
-            <form method = 'post' enctype="multipart/form-data">
+            <form method = 'post' enctype="multipart/form-data" class="form-grou form-label-left">
               <h1>Create Account</h1>
               {% csrf_token %}
-              <div>
-              	<input type="text" class="form-control" placeholder="Username" name="username" required id="signup_username"/>
+              <div class="item">
+              	<input type="text" data-validate-length-Range="5,50" class="form-control" placeholder="Username" name="signup_username" required="required" id="signup_username"/>
+              </div>
+              <div class="item">
+                <input type="password" data-validate-length-Range="8,15" class="form-control" placeholder="Password" name="signup_password" required="required" id="signup_password" />
+              </div>
+              <div class="item">
+                <input type="password" data-validate-linked="signup_password" class="form-control" placeholder="Type Password Again" name="check_password" required="required" id="check_password" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" name="password" required id="signup_password" />
-                <input type="hidden" id="sign_up" name="op" value="signup"/>
+              	<input type="hidden" id="sign_up" name="op" value="signup"/>
                 {% if regist_error %}
                 <p style="color: red;">{{regist_error}}</p>
                 {% endif %}
               </div>
-              <div style="left: 360px; position: absolute;top: 113px;width: 160px;height: 20px;">注:密码长度要求8-15个字符</div>
               <div>
                 <input type="submit" class="btn btn-default submit"  style="margin-left:140px" value = "Submit">
               </div>
+              
 
               <div class="clearfix"></div>
 
@@ -97,7 +104,7 @@
                 </p>
 
                 <div class="clearfix"></div>
-                <br />
+                <br/>
 
                 <div>
                   <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
@@ -109,5 +116,20 @@
         </div>
       </div>
     </div>
+    
+    <!-- jQuery -->
+    <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- FastClick -->
+    <script src="{% static 'vendors/fastclick/lib/fastclick.js' %}"></script>
+    <!-- NProgress -->
+    <script src="{% static 'vendors/nprogress/nprogress.js' %}"></script>
+    <!-- validator -->
+    <script src="{% static 'vendors/validator/validator.js' %}"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="{% static 'build/js/custom.min.js' %}"></script>
+    
   </body>
 </html>

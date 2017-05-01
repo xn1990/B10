@@ -31,6 +31,10 @@ urlpatterns = [
     url(r'^login$', main_views.login,name='login'),
     url(r'^logout$', main_views.logout,name='logout'),
     url(r'^profile$', main_views.profile,name='profile'),
+    url(r'^iedit_profile$', main_views.icons,name='icons'),
+    url(r'^icons$', main_views.icons,name='icons'),
+    
+    url(r'^form_validation$', main_views.form_validation,name='icons'),
 
     
     url(r'^favicon\.ico$', favicon_view),

@@ -96,8 +96,11 @@ var validator = (function($){
                 }
                 return true;
             }
-            if( !skip && lengthRange && a.length < lengthRange[0] ){
-                alertTxt = message.min;
+            if( lengthRange && a.length < lengthRange[0]){
+                if(a.length == 0){
+                	alertTxt = message.complete;}
+                else{
+                	alertTxt = message.min;}
                 return false;
             }
 
